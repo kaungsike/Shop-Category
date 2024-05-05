@@ -10,3 +10,10 @@ export const createCategory = (categoryName) => {
 export const renderCategory = (categories) => {
     categories.forEach((el) => categoryGroup.append(createCategory(el)));
 }
+
+export const handleCategoryGroup = (e) => {
+    if(e.target.classList.contains("cat-btn")){
+        const currentCategory = e.target.innerText;
+        console.log(currentCategory);
+    }
+}
