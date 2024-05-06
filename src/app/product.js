@@ -5,7 +5,7 @@ import {
   productGroup,
   productTemplate,
 } from "../js/core/selectors.js";
-import { createCardItem } from "./cart.js";
+import { cartCostTotal, createCardItem, updateCartItemNumber } from "./cart.js";
 
 export const createProduct = (product) => {
   const template = productTemplate.content.cloneNode(true);
@@ -21,11 +21,7 @@ export const createProduct = (product) => {
   ).innerText = `${product.rating.rate} / ${product.rating.count}`;
   template.querySelector(".product-price").innerText = product.price;
 
-  console.log(Math.round(product.rating.rate));
-
-
-
-    template.querySelector(".product-star").innerHTML = renderStar(product.rating.rate)
+  template.querySelector(".product-star").innerHTML = renderStar(product.rating.rate)
 
   return template;
 };
@@ -42,7 +38,9 @@ export const handleProductGroup = (e) => {
       currentProductCard.getAttribute("product-id")
     );
     const currentProduct = products.find((el) => el.id === currentProductId);
-    cardItemGroup.append(createCardItem(currentProduct, 2));
+    cardItemGroup.append(createCardItem(currentProduct, 1));
+    updateCartItemNumber()
+    cartCostTotal()
   }
 };
 

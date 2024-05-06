@@ -13,6 +13,10 @@ export const categoryGroup = document.querySelector("#categoryGroup");
 export const productGroup = document.querySelector("#productGroup");
 export const cardItemGroup = document.querySelector("#cardItemGroup")
 
+// 
+export const cartItemCount = document.querySelector("#cartItemCount")
+export const cartCount = document.querySelector("#cartCount")
 
 
+export const totalCost = document.querySelector("#totalCost")
 

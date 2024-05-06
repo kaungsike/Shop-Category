@@ -1,4 +1,4 @@
-import { cardItemTemplate } from "../js/core/selectors"
+import { cardItemGroup, cardItemTemplate, cartCount, cartItemCount, totalCost } from "../js/core/selectors"
 
 export const createCardItem = (product,quantity) => {
     const template = cardItemTemplate.content.cloneNode(true);
@@ -8,4 +8,19 @@ export const createCardItem = (product,quantity) => {
     template.querySelector(".cart-item-quantity").innerText = quantity;
 
     return template;
+}
+
+export const countCartItem = () => {
+    return cardItemGroup.querySelectorAll(".cart-item").length;
+}
+
+export const updateCartItemNumber = () => {
+    cartCount.innerText = countCartItem()
+    cartItemCount.innerText = countCartItem()
+}
+
+export const cartCostTotal = () => {
+    const allProductPrice = document.querySelectorAll(".cart-item-price");
+    const allProductCost = [...allProductPrice].reduce((pv,{innerText}) => pv+parseFloat(innerText),0);
+    totalCost.innerText = (parseFloat(totalCost.innerText) + allProductCost).toFixed(2);
 }
