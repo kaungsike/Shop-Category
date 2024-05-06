@@ -7,3 +7,5 @@ import 'flowbite'
 
 const shop = new Shop;
 shop.init();
+
+// console.log(products.filter((el) => el.category==="electronics"));

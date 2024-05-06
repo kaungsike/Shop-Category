@@ -217,7 +217,7 @@
             <p class="product-title font-bold mt-[40px] mb-2 line-clamp-1">
               Mens Cotton Jacket
             </p>
-            <p class="product-description text-sm mb-3 line-clamp-3">
+            <p class="product-description text-sm mb-3 line-clamp-2">
               Your perfect pack for everyday use and walks in the forest.
               Stash your laptop (up to 15 inches) in the padded sleeve, your
               everyday ...
@@ -281,9 +281,57 @@
             </div>
             <hr class="border-gray-700 mb-3" />
             <p class="font-bold mb-3">$ <span class="product-price">109.5</span></p>
-            <button class="product-add-cart-btn w-full border border-gray-700 p-2 rounded">
+            <button class="duration-200 active:scale-90 product-add-cart-btn w-full border border-gray-700 p-2 rounded">
               Add To Cart
             </button>
+          </div>
+        </div>
+      </template>
+
+      <template id="cardItemTemplate">
+        <div class="card-item group">
+          <img
+            src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+            class="card-item-img h-16 -mb-[30px] ml-3"
+            alt />
+          <div class="card-info border border-gray-700 rounded p-3">
+            <p class="font-bold mb-2 mt-[30px]">Mens Cotton Jacket</p>
+            <div class="flex justify-between items-center">
+              <p>$ <span>109.5</span></p>
+              <div class>
+                <button
+                  class="cart-q-sub active:scale-75 duration-200 opacity-0 pointer-events-none group-hover:opacity-100 -translate-x-10 group-hover:pointer-events-auto group-hover:translate-x-0 bg-gray-200 rounded p-1 print:hidden">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-3 h-3 pointer-events-none">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14" />
+                  </svg>
+                </button>
+                <span class="cart-quantity w-5 inline-block text-end">0</span>
+                <button
+                  class="cart-q-add active:scale-90 bg-gray-200 rounded p-1 print:hidden duration-200 opacity-0 pointer-events-none group-hover:opacity-100 translate-x-10 group-hover:pointer-events-auto group-hover:translate-x-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-3 h-3 pointer-events-none">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </template>

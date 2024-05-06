@@ -1,8 +1,10 @@
 import { handleCategoryGroup } from "../../app/category.js";
-import { categoryGroup } from "./selectors.js";
+import { handleProductGroup } from "../../app/product.js";
+import { categoryGroup, productGroup } from "./selectors.js";
 
 const listener = () => {
-    categoryGroup.addEventListener("click",handleCategoryGroup)
+    categoryGroup.addEventListener("click",handleCategoryGroup);
+    productGroup.addEventListener("click",handleProductGroup)
 }
 
 export default listener;
