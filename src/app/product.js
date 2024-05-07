@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import { products } from "../js/core/data.js";
 import {
   cardItemGroup,
-  categoryGroup,
+  cartItemCount,
   productGroup,
   productTemplate,
 } from "../js/core/selectors.js";
@@ -23,6 +23,13 @@ export const createProduct = (product) => {
   template.querySelector(".product-price").innerText = product.price;
 
   template.querySelector(".product-star").innerHTML = renderStar(product.rating.rate)
+
+  const isExistedCart = cardItemGroup.querySelector(`[product-id='${product.id}']`);
+  
+  if(isExistedCart){
+    template.querySelector(".product-add-cart-btn").setAttribute("disabled",true);
+    template.querySelector(".product-add-cart-btn").innerText = "Added"
+  }
 
   return template;
 };
@@ -46,6 +53,10 @@ export const handleProductGroup = (e) => {
         toast.onmouseenter = Swal.stopTimer;
         toast.onmouseleave = Swal.resumeTimer;
         e.target.innerText = "Added"
+        if(cartItemCount.innerText>0){
+          cartItemCount.classList.remove("hidden")
+          cartItemCount.classList.add("flex")
+        }
       }
     });
     Toast.fire({

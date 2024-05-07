@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { cartCostTotal, updateCartItemNumber } from "../../app/cart";
-import { productGroup } from "./selectors";
+import { cartItemCount, productGroup } from "./selectors";
 
 export const cartRemoveFunction = (e) => {
     const currentCart = e.target.closest(".cart-item");
@@ -31,6 +31,9 @@ export const cartRemoveFunction = (e) => {
                   toast.onmouseleave = Swal.resumeTimer;
                   currentProductBtn.removeAttribute("disabled");
                   currentProductBtn.innerText = "Att to cart";
+                  if(cartItemCount.innerText<1){
+                    cartItemCount.classList.add("hidden")
+                  }
                 }
               });
               Toast.fire({
