@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { products } from "../js/core/data.js";
 import {
   cardItemGroup,
@@ -34,8 +35,26 @@ export const renderProduct = (products) => {
 export const handleProductGroup = (e) => {
   if (e.target.classList.contains("product-add-cart-btn")) {
     const currentProductCard = e.target.closest(".product-card");
+    e.target.setAttribute("disabled",true);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+        e.target.innerText = "Added"
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Item Added Successful!"
+    });
+
     const currentProductId = parseInt(
-      currentProductCard.getAttribute("product-id")
+    currentProductCard.getAttribute("product-id")
     );
     const currentProduct = products.find((el) => el.id === currentProductId);
     cardItemGroup.append(createCardItem(currentProduct, 1));
