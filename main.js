@@ -1,7 +1,4 @@
 import Shop from './src/Shop.js'
-import { createCardItem } from './src/app/cart.js';
-import { createProduct } from './src/app/product.js';
-import { products } from './src/js/core/data.js';
 import './style.css'
 import 'flowbite'
 
