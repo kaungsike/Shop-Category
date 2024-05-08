@@ -5,8 +5,6 @@ import { cartItemCount, productGroup } from "./selectors";
 export const cartRemoveFunction = (e) => {
     const currentCart = e.target.closest(".cart-item");
     const currentCartId = currentCart.getAttribute("product-id");
-    const currentProduct = productGroup.querySelector(`[product-id='${currentCartId}']`);
-    const currentProductBtn = currentProduct.querySelector(".product-add-cart-btn");
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -29,11 +27,16 @@ export const cartRemoveFunction = (e) => {
                 didOpen: (toast) => {
                   toast.onmouseenter = Swal.stopTimer;
                   toast.onmouseleave = Swal.resumeTimer;
-                  currentProductBtn.removeAttribute("disabled");
-                  currentProductBtn.innerText = "Att to cart";
+                  const currentProduct = productGroup.querySelector(`[product-id='${currentCartId}']`);
+                  if(currentProduct){
+                    const currentProductBtn = currentProduct.querySelector(".product-add-cart-btn");
+                    currentProductBtn.removeAttribute("disabled");
+                    currentProductBtn.innerText = "Att to cart";
+                  }
                   if(cartItemCount.innerText<1){
                     cartItemCount.classList.add("hidden")
                   }
+
                 }
               });
               Toast.fire({

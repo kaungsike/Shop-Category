@@ -20,3 +20,5 @@ export const cartCount = document.querySelector("#cartCount")
 
 export const totalCost = document.querySelector("#totalCost")
 
+export const openDrawer = document.querySelector("#openDrawer");
+

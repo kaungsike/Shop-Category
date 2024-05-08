@@ -3,6 +3,7 @@ import { products } from "../js/core/data.js";
 import {
   cardItemGroup,
   cartItemCount,
+  openDrawer,
   productGroup,
   productTemplate,
 } from "../js/core/selectors.js";
@@ -69,7 +70,47 @@ export const handleProductGroup = (e) => {
     );
     const currentProduct = products.find((el) => el.id === currentProductId);
     cardItemGroup.append(createCardItem(currentProduct, 1));
-    updateCartItemNumber()
+
+    const currentProductCardImg = currentProductCard.querySelector(".product-img");
+
+    console.log(openDrawer.getBoundingClientRect());
+
+    const animateImg = new Image();
+    animateImg.src = currentProductCardImg.src;
+    animateImg.style.position = "fixed";
+    animateImg.style.top = currentProductCardImg.getBoundingClientRect().top + "px";
+    animateImg.style.left = currentProductCardImg.getBoundingClientRect().left + "px";
+    animateImg.style.width = currentProductCardImg.getBoundingClientRect().width + "px";
+    animateImg.style.height = currentProductCardImg.getBoundingClientRect().height + "px";
+
+    const keyframes = [
+      {
+        top : currentProductCardImg.getBoundingClientRect().top + "px",
+        left : currentProductCardImg.getBoundingClientRect().left + "px"
+      },{
+        top : openDrawer.querySelector("svg").getBoundingClientRect().top + "px",
+        left : openDrawer.querySelector("svg").getBoundingClientRect().left + "px",
+        height : "0px",
+        width : "0px",
+        transform : "rotate(1turn)"
+      }
+    ];
+    const duration = 500;
+
+    const addToCartAnimation = animateImg.animate(keyframes,duration)
+
+    addToCartAnimation.addEventListener("finish", () => {
+      updateCartItemNumber()
+      animateImg.classList.add("hidden")
+      openDrawer.classList.add("animate__animated","animate__rubberBand");
+      openDrawer.addEventListener("animationend", () => {
+        openDrawer.classList.remove("animate__rubberBand")
+      })
+    })
+
+    document.body.append(animateImg)
+
+  
     cartCostTotal()
   }
 };
